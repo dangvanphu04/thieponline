@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý Hôn Lễ</title>
+    <style>
+        body { 
+            font-family: 'Arial', sans-serif; 
+            margin: 20px; 
+            background: #f9f7fe;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #8a2387;
+            border-bottom: 3px solid #e94057;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #f9f7fe 0%, #f0edf5 100%);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .stat-card h3 {
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #8a2387;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        .tables-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 992px) {
+            .tables-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        th {
+            background: linear-gradient(to right, #8a2387, #e94057);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        tr:hover {
+            background: #f9f7fe;
+        }
+        
+        .attending-yes { 
+            color: #4CAF50; 
+            font-weight: bold;
+        }
+        
+        .attending-maybe { 
+            color: #FF9800; 
+            font-weight: bold;
+        }
+        
+        .attending-no { 
+            color: #F44336; 
+            font-weight: bold;
+        }
+        
+        .wish-message {
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .export-buttons {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .export-btn {
+            background: linear-gradient(to right, #8a2387, #e94057);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #8a2387;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #8a2387;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #8a2387;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quản lý Hôn Lễ - Nguyễn Văn A & Trần Thị B</h1>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Tổng số khách đã liên hệ</h3>
+                <div class="stat-value">{{ total_guests }}</div>
+                <div class="stat-label">Người</div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Sẽ tham dự</h3>
+                <div class="stat-value">{{ attending_yes }}</div>
+                <div class="stat-label">Xác nhận có mặt</div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Có thể tham dự</h3>
+                <div class="stat-value">{{ attending_maybe }}</div>
+                <div class="stat-label">Chưa xác định</div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Lời chúc đã nhận</h3>
+                <div class="stat-value">{{ latest_wishes|length }}</div>
+                <div class="stat-label">Tin nhắn</div>
+            </div>
+        </div>
+        
+        <div class="export-buttons">
+            <button class="export-btn" onclick="exportToExcel()">
+                <i class="fas fa-file-excel"></i> Xuất Excel
+            </button>
+            <button class="export-btn" onclick="exportToPDF()">
+                <i class="fas fa-file-pdf"></i> Xuất PDF
+            </button>
+            <button class="export-btn" onclick="printReport()">
+                <i class="fas fa-print"></i> In báo cáo
+            </button>
+        </div>
+        
+        <div class="tables-container">
+            <div>
+                <h2>Danh sách khách mời</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tên</th>
+                            <th>SĐT</th>
+                            <th>Tham dự</th>
+                            <th>Thời gian</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for id, guest in guests.items() %}
+                        <tr>
+                            <td>{{ guest.name }}</td>
+                            <td>{{ guest.phone if guest.phone else '-' }}</td>
+                            <td class="attending-{{ guest.attendance }}">
+                                {% if guest.attendance == 'yes' %} Có
+                                {% elif guest.attendance == 'maybe' %} Có thể
+                                {% else %} Không
+                                {% endif %}
+                            </td>
+                            <td>{{ guest.timestamp }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <div>
+                <h2>Lời chúc mới nhất</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tên</th>
+                            <th>Mối quan hệ</th>
+                            <th>Lời chúc</th>
+                            <th>Thời gian</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for wish in latest_wishes %}
+                        <tr>
+                            <td>{{ wish.name }}</td>
+                            <td>
+                                {% if wish.relationship == 'groom' %} Nhà trai
+                                {% elif wish.relationship == 'bride' %} Nhà gái
+                                {% elif wish.relationship == 'both' %} Cả hai
+                                {% else %} Bạn bè
+                                {% endif %}
+                            </td>
+                            <td class="wish-message" title="{{ wish.message }}">
+                                {{ wish.message[:50] }}...
+                            </td>
+                            <td>{{ wish.timestamp[:10] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <a href="/" class="back-link">
+            <i class="fas fa-arrow-left"></i> Quay lại thiệp mời
+        </a>
+    </div>
+    
+    <script>
+        function exportToExcel() {
+            alert('Tính năng xuất Excel đang được phát triển');
+        }
+        
+        function exportToPDF() {
+            alert('Tính năng xuất PDF đang được phát triển');
+        }
+        
+        function printReport() {
+            window.print();
+        }
+    </script>
+</body>
+</html>

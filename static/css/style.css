@@ -1,0 +1,715 @@
+/* Reset và base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(135deg, #fff9fb 0%, #fef5f8 100%);
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 20px;
+    background-image: url('/static/images/background-pattern.png');
+    background-size: cover;
+}
+
+.invitation-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(138, 35, 135, 0.15);
+    overflow: hidden;
+    position: relative;
+    border: 2px solid #f0e6ef;
+}
+
+/* Header với hai họ */
+.family-heading {
+    background: linear-gradient(135deg, #8a2387 0%, #e94057 100%);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    border-bottom: 5px solid #ffd700;
+}
+
+.family-heading h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.two-families {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 30px;
+    background: linear-gradient(135deg, #f9f2f9 0%, #f5eaf5 100%);
+    position: relative;
+    min-height: 300px;
+}
+
+.family {
+    flex: 1;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.family:hover {
+    transform: translateY(-5px);
+}
+
+.bride-family {
+    background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
+    border: 3px solid #e94057;
+}
+
+.groom-family {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+    border: 3px solid #4169e1;
+}
+
+.family-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.family-title i {
+    font-size: 2.5rem;
+    color: #8a2387;
+}
+
+.family-title h2 {
+    font-size: 2rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.parents {
+    margin: 20px 0;
+}
+
+.parent {
+    margin: 15px 0;
+}
+
+.parent h3 {
+    color: #8a2387;
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.parent p {
+    color: #666;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.address {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #ccc;
+}
+
+.address i {
+    color: #e94057;
+    font-size: 1.2rem;
+}
+
+.heart-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+}
+
+.big-heart {
+    font-size: 4rem;
+    color: #ff3366;
+    animation: heartbeat 1.5s infinite;
+    margin-bottom: 15px;
+}
+
+.couple-name {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(138, 35, 135, 0.2);
+    border: 2px solid #ffd700;
+}
+
+.couple-name h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    margin: 10px 0;
+    color: #8a2387;
+}
+
+.heart-icon {
+    font-size: 2rem;
+    color: #ff3366;
+    margin: 10px 0;
+}
+
+.wedding-date-large {
+    background: linear-gradient(135deg, #4169e1 0%, #8a2387 100%);
+    color: white;
+    text-align: center;
+    padding: 25px;
+    border-top: 5px solid #ffd700;
+}
+
+.date-label {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.date-time {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin: 10px 0;
+}
+
+.date-main {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 10px 0;
+}
+
+.date-lunar {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+/* Countdown lớn */
+.main-countdown {
+    text-align: center;
+    padding: 50px 30px;
+    background: linear-gradient(135deg, #fef9ff 0%, #f5f0ff 100%);
+    border-bottom: 3px solid #ffd700;
+}
+
+.main-countdown h2 {
+    color: #8a2387;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.countdown-timer-large {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.time-unit-large {
+    background: linear-gradient(135deg, #8a2387, #e94057);
+    color: white;
+    padding: 25px 15px;
+    border-radius: 15px;
+    min-width: 120px;
+    box-shadow: 0 8px 25px rgba(138, 35, 135, 0.3);
+}
+
+.time-unit-large span {
+    font-size: 3.5rem;
+    font-weight: bold;
+    display: block;
+    font-family: 'Courier New', monospace;
+}
+
+.time-unit-separator {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #8a2387;
+    margin: 0 5px;
+}
+
+.countdown-message {
+    font-size: 1.2rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+/* Thư chúc mừng */
+.congratulation-letter {
+    padding: 40px;
+    border-bottom: 2px dashed #e0e0e0;
+}
+
+.letter-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #ffd700;
+}
+
+.letter-header h2 {
+    color: #8a2387;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.letter-date {
+    color: #666;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.letter-body {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.salutation {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f9f7fe;
+    border-radius: 10px;
+    border-left: 5px solid #8a2387;
+}
+
+.salutation p {
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.salutation h3 {
+    color: #e94057;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.letter-content {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    margin: 30px 0;
+}
+
+.letter-content p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.bridal-couple {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 40px 0;
+    padding: 30px;
+    background: linear-gradient(135deg, #f9f7fe 0%, #f0edf5 100%);
+    border-radius: 15px;
+}
+
+.groom-side, .bride-side {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+.groom-side h4, .bride-side h4 {
+    color: #4169e1;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.bride-side h4 {
+    color: #e94057;
+}
+
+.union-heart {
+    font-size: 3rem;
+    color: #ff3366;
+    animation: pulse 2s infinite;
+}
+
+.blessing {
+    background: #fff9f9;
+    padding: 30px;
+    border-radius: 15px;
+    margin: 40px 0;
+    position: relative;
+    border: 2px solid #ffe4e1;
+}
+
+.blessing i.fa-quote-left {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 2rem;
+    color: #e94057;
+    opacity: 0.5;
+}
+
+.blessing i.fa-quote-right {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: #e94057;
+    opacity: 0.5;
+}
+
+.blessing-text {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: #8a2387;
+    text-align: center;
+    padding: 0 40px;
+}
+
+.letter-closing {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.signatures {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.signature {
+    padding: 20px 30px;
+    border-radius: 15px;
+    min-width: 250px;
+}
+
+.groom-signature {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+    border: 2px solid #4169e1;
+}
+
+.bride-signature {
+    background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
+    border: 2px solid #e94057;
+}
+
+.signature h4 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.signature p {
+    font-weight: bold;
+    color: #8a2387;
+    font-size: 1.1rem;
+}
+
+/* Form chúc mừng */
+.congratulation-section {
+    padding: 40px;
+    background: linear-gradient(135deg, #f9f7fe 0%, #f0edf5 100%);
+    border-radius: 20px;
+    margin: 40px 30px;
+}
+
+.congratulation-section h2 {
+    color: #8a2387;
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #8a2387;
+    box-shadow: 0 0 0 3px rgba(138, 35, 135, 0.1);
+}
+
+.relationship-select {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.relationship-select label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 12px 20px;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.relationship-select label:hover {
+    border-color: #8a2387;
+    background: #f9f7fe;
+}
+
+.relationship-select input[type="radio"]:checked + span {
+    color: #8a2387;
+    font-weight: bold;
+}
+
+.char-count {
+    text-align: right;
+    margin-top: 5px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.attendance-group {
+    margin: 30px 0;
+}
+
+.attendance-options {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.attendance-option {
+    flex: 1;
+    min-width: 150px;
+}
+
+.attendance-option input {
+    display: none;
+}
+
+.option-box {
+    padding: 20px;
+    border: 3px solid #ddd;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: white;
+}
+
+.option-box i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.attendance-option input:checked + .option-box {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.attending-yes {
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+
+.attending-yes i {
+    color: #4CAF50;
+}
+
+.attending-maybe {
+    border-color: #FF9800;
+    color: #FF9800;
+}
+
+.attending-maybe i {
+    color: #FF9800;
+}
+
+.attending-no {
+    border-color: #F44336;
+    color: #F44336;
+}
+
+.attending-no i {
+    color: #F44336;
+}
+
+.submit-btn-large {
+    background: linear-gradient(to right, #8a2387, #e94057);
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 60px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.submit-btn-large:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(138, 35, 135, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .two-families {
+        flex-direction: column;
+        gap: 30px;
+        padding: 30px 20px;
+    }
+    
+    .heart-center {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        order: 2;
+        margin: 20px 0;
+    }
+    
+    .family {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .countdown-timer-large {
+        flex-wrap: wrap;
+    }
+    
+    .time-unit-large {
+        min-width: 80px;
+        padding: 15px 10px;
+    }
+    
+    .time-unit-large span {
+        font-size: 2.5rem;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .signatures {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .family-heading h1 {
+        font-size: 2rem;
+    }
+    
+    .date-time {
+        font-size: 2.5rem;
+    }
+    
+    .date-main {
+        font-size: 1.4rem;
+    }
+    
+    .main-countdown h2 {
+        font-size: 1.8rem;
+    }
+    
+    .letter-header h2 {
+        font-size: 2rem;
+    }
+    
+    .bridal-couple {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .attendance-options {
+        flex-direction: column;
+    }
+    
+    .time-unit-separator {
+        display: none;
+    }
+}
+
+/* Animations */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
