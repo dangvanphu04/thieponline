@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư Mời Dự Tiệc Cưới - Quang Gioóng & Chum Chum</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-final.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- Auto-play audio -->
+    <script>
+        // Hàm phát nhạc tự động
+        function playAudio() {
+            const audio = document.getElementById('weddingMusic');
+            if (audio) {
+                audio.volume = 0.3; // Âm lượng vừa phải
+                const playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        // Âm thanh bắt đầu tự động
+                        console.log('Âm thanh đang phát tự động');
+                    }).catch(error => {
+                        // Trình duyệt chặn auto-play, yêu cầu tương tác người dùng
+                        console.log('Cần tương tác để phát nhạc');
+                        
+                        // Thêm sự kiện click toàn trang để kích hoạt âm thanh
+                        document.body.addEventListener('click', function activateAudio() {
+                            audio.play();
+                            document.body.removeEventListener('click', activateAudio);
+                        }, { once: true });
+                    });
+                }
+            }
+        }
+        
+        // Phát nhạc khi trang load xong
+        window.addEventListener('load', playAudio);
+    </script>
+</head>
+<body>
+    <!-- Audio tự động phát -->
+    <audio id="weddingMusic" loop autoplay>
+        <source src="{{ url_for('static', filename='audio/amthanhcuoi.mp3') }}" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ phát âm thanh.
+    </audio>
+
+    <div class="background-pattern"></div>
+    
+    <!-- Animated Floating Elements -->
+    <div class="floating-hearts"></div>
+    <div class="floating-flowers"></div>
+    <div class="floating-sparkles"></div>
+    
+    <!-- Animated Characters -->
+    <div class="animated-character groom">
+        <img src="{{ url_for('static', filename='images/animated/groom.gif') }}" 
+             alt="Chú rể hoạt hình" 
+             onerror="this.style.display='none'">
+    </div>
+    
+    <div class="animated-character bride">
+        <img src="{{ url_for('static', filename='images/animated/bride.gif') }}" 
+             alt="Cô dâu hoạt hình"
+             onerror="this.style.display='none'">
+    </div>
+    
+    <div class="invitation-container">
+        <!-- TIÊU ĐỀ VỚI HIỆU ỨNG -->
+        <div class="title-container animate__animated animate__fadeInDown">
+            <div class="title-sparkle left">✨</div>
+            <h1 class="main-title animate__animated animate__pulse animate__infinite animate__slower">THƯ MỜI DỰ TIỆC CƯỚI</h1>
+            <div class="title-sparkle right">✨</div>
+            <p class="title-subtitle animate__animated animate__fadeIn animate__delay-1s">Quang Gioóng & Chum Chum</p>
+        </div>
+
+        <!-- ẢNH CHÍNH VỚI HIỆU ỨNG -->
+        <div class="main-hero-section">
+            <!-- Tên cặp đôi với hiệu ứng -->
+            <div class="couple-names-top animate__animated animate__bounceIn">
+                <div class="couple-name-hero animate__animated animate__heartBeat animate__delay-2s animate__infinite">Quang Gioóng</div>
+                <div class="heart-separator floating">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="couple-name-hero animate__animated animate__heartBeat animate__delay-3s animate__infinite">Chum Chum</div>
+            </div>
+
+            <!-- Ảnh chính với hiệu ứng -->
+            <div class="hero-image-container animate__animated animate__zoomIn">
+                <div class="image-frame">
+                    <img src="{{ url_for('static', filename='images/chinh.jpg') }}" 
+                         alt="Cô dâu & Chú rể" 
+                         class="hero-image"
+                         onerror="this.src='/static/images/default-couple.jpg'">
+                </div>
+            </div>
+
+            <!-- Thơ dưới ảnh -->
+            <div class="poem-below animate__animated animate__fadeInUp animate__delay-1s">
+                <p>"Duyên phận là sợi chỉ hồng</p>
+                <p>Trời se kết mối tơ đồng đôi ta"</p>
+            </div>
+
+            <!-- Thời gian với hiệu ứng -->
+            <div class="time-info-below animate__animated animate__pulse animate__infinite animate__slow">
+                <div class="time-badge animate__animated animate__tada animate__infinite animate__slower">💝</div>
+                <div class="time-below">16:00</div>
+                <div class="day-below">THỨ TƯ</div>
+                <div class="date-below">07.01.2025</div>
+                <div class="location-below">
+                    Hôn lễ được tổ chức tại nhà trai
+                </div>
+            </div>
+        </div>
+
+        <!-- HAI GIA ĐÌNH VỚI HIỆU ỨNG -->
+        <div class="families-container">
+            <!-- NHÀ GÁI - BÊN TRÁI -->
+            <div class="family-left animate__animated animate__slideInLeft">
+                <div class="family-icon">👰</div>
+                <h2 class="family-title">NHÀ GÁI</h2>
+                
+                <div class="parents-container">
+                    <div class="parent-card animate__animated animate__fadeInUp animate__delay-1s">
+                        <div class="parent-avatar">👨</div>
+                        <div class="parent-name">Ông: Lường Văn Soạn</div>
+                        <div class="parent-role">Thân phụ cô dâu</div>
+                    </div>
+                    
+                    <div class="parent-card animate__animated animate__fadeInUp animate__delay-2s">
+                        <div class="parent-avatar">👩</div>
+                        <div class="parent-name">Bà: Lường Thị Chung</div>
+                        <div class="parent-role">Thân mẫu cô dâu</div>
+                    </div>
+                </div>
+                
+                <div class="bride-groom-section animate__animated animate__zoomIn">
+                    <div class="bride-groom-title">CÔ DÂU</div>
+                    <div class="bride-groom-name floating-text">Chum Chum</div>
+                </div>
+            </div>
+
+            <!-- NHÀ TRAI - BÊN PHẢI -->
+            <div class="family-right animate__animated animate__slideInRight">
+                <div class="family-icon">🤵</div>
+                <h2 class="family-title">NHÀ TRAI</h2>
+                
+                <div class="parents-container">
+                    <div class="parent-card animate__animated animate__fadeInUp animate__delay-1s">
+                        <div class="parent-avatar">👨</div>
+                        <div class="parent-name">Ông: Đặng Văn Phùng</div>
+                        <div class="parent-role">Thân phụ chú rể</div>
+                    </div>
+                    
+                    <div class="parent-card animate__animated animate__fadeInUp animate__delay-2s">
+                        <div class="parent-avatar">👩</div>
+                        <div class="parent-name">Bà: Diệp Thị Dín</div>
+                        <div class="parent-role">Thân mẫu chú rể</div>
+                    </div>
+                </div>
+                
+                <div class="bride-groom-section animate__animated animate__zoomIn">
+                    <div class="bride-groom-title">CHÚ RỂ</div>
+                    <div class="bride-groom-name floating-text">Quang Gioóng</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- THƯ MỜI CHÍNH VỚI HIỆU ỨNG -->
+        <div class="main-invitation animate__animated animate__fadeIn">
+            <div class="invitation-title">
+                <div class="invitation-sparkle">✨</div>
+                <h1 class="animate__animated animate__rubberBand animate__delay-2s">THƯ MỜI THAM DỰ TIỆC CƯỚI</h1>
+                <div class="invitation-sparkle">✨</div>
+            </div>
+            
+            <div class="invitation-couple-names">
+                <div class="invitation-couple-name floating-text">Quang Gioóng</div>
+                <div class="invitation-heart floating-heart">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="invitation-couple-name floating-text">Chum Chum</div>
+            </div>
+            
+            <div class="invitation-text animate__animated animate__fadeIn animate__delay-1s">
+                <p class="invitation-greeting">Trân trọng kính mời gia đình, bạn bè, anh chị em</p>
+                <p>Đến dự buổi tiệc mừng hôn lễ của chúng tôi. 
+                Sự hiện diện của Quý vị là niềm vinh hạnh lớn lao 
+                cho gia đình chúng tôi.</p>
+            </div>
+            
+            <!-- THÔNG TIN LỄ VU QUY VỚI HIỆU ỨNG - ĐÃ CẬP NHẬT -->
+            <div class="ceremony-info animate__animated animate__pulse animate__infinite animate__slow">
+                <div class="ceremony-title">
+                    <h2><i class="fas fa-ring spinning"></i> LỄ VU QUY</h2>
+                </div>
+                
+                <div class="ceremony-details">
+                    <!-- ĐÃ XÓA PHẦN "VÀO LÚC 16:00" RIÊNG BIỆT -->
+                    <!-- GIỜ 16:00 ĐÃ GỘP VÀO PHẦN NGÀY -->
+                    
+                    <div class="detail-item animate__animated animate__flipInX">
+                        <h3><i class="fas fa-calendar-alt"></i> NGÀY & GIỜ</h3>
+                        <div class="detail-value">
+                            16:00<br>
+                            <span class="date-time">07 THÁNG 01 NĂM 2025</span>
+                        </div>
+                        <div class="detail-note">(Thứ Tư)</div>
+                    </div>
+                    
+                    <div class="detail-item animate__animated animate__flipInX animate__delay-1s">
+                        <h3><i class="fas fa-map-marker-alt"></i> ĐỊA ĐIỂM</h3>
+                        <div class="detail-value">TƯ GIA NHÀ TRAI</div>
+                        <div class="detail-address">Tân Giáo - Nam Dương - Bắc Ninh</div>
+                        <div class="address-old">Đội 1 - Thôn Tân Giáo - Xã Tân Mộc - Lục Ngạn - Bắc Giang</div>
+                        <a href="https://maps.google.com/?q=21°15'50.2%22N 106°36'44.2%22E" 
+                           target="_blank" class="map-link">
+                            <i class="fas fa-directions"></i> Xem bản đồ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHẦN QR VÀ STK (2 QR) -->
+        <div class="qr-section animate__animated animate__bounceInUp">
+            <div class="qr-title">
+                <h2><i class="fas fa-qrcode spinning"></i> Gửi Lời Chúc Mừng</h2>
+            </div>
+            
+            <div class="qr-double-container">
+                <!-- QR CÔ DÂU -->
+                <div class="qr-couple">
+                    <div class="qr-header bride-header">
+                        <i class="fas fa-user-bride"></i>
+                        <h3>Cô Dâu</h3>
+                    </div>
+                    
+                    <div class="qr-image-container animate__animated animate__rotateIn">
+                        <img src="{{ url_for('static', filename='images/qrvk.jpg') }}" 
+                             alt="QR Code Cô Dâu" 
+                             class="qr-image floating"
+                             onerror="this.src='/static/images/default-qr.jpg'">
+                    </div>
+                    
+                    <div class="bank-info">
+                        <div class="bank-item">
+                            <h3><i class="fas fa-university"></i> Ngân hàng</h3>
+                            <p>Quân đội (MBBank)</p>
+                        </div>
+                        
+                        <div class="bank-item">
+                            <h3><i class="fas fa-user"></i> Chủ tài khoản</h3>
+                            <p>LƯƠNG THỊ CHUM</p>
+                        </div>
+                        
+                        <div class="bank-item">
+                            <h3><i class="fas fa-credit-card"></i> Số tài khoản</h3>
+                            <p class="copyable">9961 9967 7777</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- QR CHÚ RỂ -->
+                <div class="qr-couple">
+                    <div class="qr-header groom-header">
+                        <i class="fas fa-user-tie"></i>
+                        <h3>Chú Rể</h3>
+                    </div>
+                    
+                    <div class="qr-image-container animate__animated animate__rotateIn">
+                        <img src="{{ url_for('static', filename='images/qrck.jpg') }}" 
+                             alt="QR Code Chú Rể" 
+                             class="qr-image floating"
+                             onerror="this.src='/static/images/default-qr.jpg'">
+                    </div>
+                    
+                    <div class="bank-info">
+                        <div class="bank-item">
+                            <h3><i class="fas fa-university"></i> Ngân hàng</h3>
+                            <p>BIDV</p>
+                        </div>
+                        
+                        <div class="bank-item">
+                            <h3><i class="fas fa-user"></i> Chủ tài khoản</h3>
+                            <p>ĐẶNG VĂN GIOÓNG</p>
+                        </div>
+                        
+                        <div class="bank-item">
+                            <h3><i class="fas fa-credit-card"></i> Số tài khoản</h3>
+                            <p class="copyable">8854 9117 87</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="qr-message animate__animated animate__fadeIn animate__delay-2s">
+                <p><i class="fas fa-heart heartbeat"></i> 
+                Mọi lời chúc mừng và quà tặng đều là tình cảm quý báu của mọi người. 
+                Xin chân thành cảm ơn!</p>
+            </div>
+        </div>
+
+        <!-- THÔNG TIN LIÊN HỆ VỚI HIỆU ỨNG -->
+        <div class="contact-section animate__animated animate__jackInTheBox">
+            <div class="contact-title">
+                <h3><i class="fas fa-phone-alt"></i> Thông tin liên hệ</h3>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item animate__animated animate__bounceInLeft">
+                    <div class="contact-avatar">🤵</div>
+                    <p><strong>Chú rể: Quang Gioóng</strong></p>
+                    <p><i class="fas fa-phone"></i> 0356 616 112</p>
+                </div>
+                
+                <div class="contact-item animate__animated animate__bounceInRight">
+                    <div class="contact-avatar">👰</div>
+                    <p><strong>Cô dâu: Chum Chum</strong></p>
+                    <p><i class="fas fa-phone"></i> 0985 909 833</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHẦN ALBUM (ĐỂ TRỐNG) -->
+        <div class="album-section" id="albumSection">
+            <h2 class="album-title"><i class="fas fa-images"></i> Album Ảnh Cưới</h2>
+            <div class="album-grid" id="albumGrid">
+                <!-- Album sẽ được thêm vào đây sau -->
+                <div class="album-placeholder">
+                    <i class="fas fa-camera fa-3x"></i>
+                    <p>Album ảnh sẽ được cập nhật sau</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confetti Effect -->
+    <div id="confetti"></div>
+
+    <script>
+        // Auto-play audio với fallback cho các trình duyệt chặn autoplay
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('weddingMusic');
+            
+            if (audio) {
+                audio.volume = 0.3; // Âm lượng 30%
+                
+                // Thử phát nhạc tự động
+                const playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {
+                        // Nếu bị chặn, thêm sự kiện click toàn trang để kích hoạt
+                        document.addEventListener('click', function initAudio() {
+                            audio.play();
+                            document.removeEventListener('click', initAudio);
+                        }, { once: true });
+                        
+                        // Hiển thị thông báo nhỏ
+                        showAudioPrompt();
+                    });
+                }
+            }
+            
+            // Hiệu ứng confetti khi click
+            document.addEventListener('click', createConfetti);
+            
+            // Tạo floating elements
+            createFloatingElements();
+            
+            // Hiệu ứng cho các thành phần
+            setupAnimations();
+            
+            // Thiết lập copy số tài khoản
+            setupCopyFunction();
+        });
+        
+        // Hiển thị thông báo nhỏ về âm thanh
+        function showAudioPrompt() {
+            const prompt = document.createElement('div');
+            prompt.className = 'audio-prompt';
+            prompt.innerHTML = `
+                <i class="fas fa-music"></i>
+                <span>Click vào trang để nghe nhạc cưới</span>
+            `;
+            document.body.appendChild(prompt);
+            
+            setTimeout(() => {
+                prompt.remove();
+            }, 5000);
+        }
+        
+        // Tạo confetti
+        function createConfetti() {
+            const confetti = document.getElementById('confetti');
+            for(let i = 0; i < 100; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'confetti-particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.backgroundColor = getRandomColor();
+                confetti.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 3000);
+            }
+        }
+        
+        function getRandomColor() {
+            const colors = ['#ff4081', '#c2185b', '#7b1fa2', '#4169e1', '#4CAF50'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+        
+        // Tạo floating elements
+        function createFloatingElements() {
+            const heartsContainer = document.querySelector('.floating-hearts');
+            const flowersContainer = document.querySelector('.floating-flowers');
+            const sparklesContainer = document.querySelector('.floating-sparkles');
+            
+            const hearts = ['💖', '💕', '💗', '💓', '💞'];
+            const flowers = ['🌸', '🌺', '🌷', '🌹', '💐'];
+            const sparkles = ['✨', '🌟', '⭐', '💫', '🎊'];
+            
+            createElements(heartsContainer, hearts, 15, 'heart');
+            createElements(flowersContainer, flowers, 10, 'flower');
+            createElements(sparklesContainer, sparkles, 20, 'sparkle');
+        }
+        
+        function createElements(container, symbols, count, className) {
+            for(let i = 0; i < count; i++) {
+                const element = document.createElement('div');
+                element.className = `floating-element ${className}`;
+                element.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                element.style.left = Math.random() * 100 + 'vw';
+                element.style.animationDelay = Math.random() * 5 + 's';
+                element.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                element.style.opacity = Math.random() * 0.5 + 0.5;
+                container.appendChild(element);
+            }
+        }
+        
+        // Thiết lập hiệu ứng
+        function setupAnimations() {
+            // Intersection Observer cho hiệu ứng scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Quan sát tất cả các phần tử cần hiệu ứng
+            document.querySelectorAll('.parent-card, .detail-item, .contact-item, .bank-item').forEach(el => {
+                observer.observe(el);
+            });
+        }
+        
+        // Thiết lập copy số tài khoản
+        function setupCopyFunction() {
+            document.querySelectorAll('.copyable').forEach(element => {
+                element.addEventListener('click', function() {
+                    const text = this.textContent.replace(/\s/g, '');
+                    navigator.clipboard.writeText(text).then(() => {
+                        const original = this.innerHTML;
+                        this.innerHTML = '✅ Đã sao chép!';
+                        this.style.color = '#4CAF50';
+                        setTimeout(() => {
+                            this.innerHTML = original;
+                            this.style.color = '';
+                        }, 2000);
+                    });
+                });
+                element.style.cursor = 'pointer';
+                element.title = 'Click để sao chép';
+            });
+        }
+    </script>
+</body>
+</html>
